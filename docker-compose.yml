@@ -8,8 +8,8 @@ services:
       - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL}
     restart: unless-stopped
     networks:
-      - mamovies-network
+      - mamovies_mamovies-network
 
 networks:
-  mamovies-network:
+  mamovies_mamovies-network:
     external: true
