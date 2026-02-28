@@ -2,7 +2,7 @@ services:
   mamovies-form:
     build: .
     ports:
-      - "${PORT:-3000}:3000"
+      - "${PORT:-3333}:3333"
     environment:
       - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL}
     restart: unless-stopped
