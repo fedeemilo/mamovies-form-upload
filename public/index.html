@@ -251,6 +251,7 @@
     </div>
 
     <form id="uploadForm" novalidate>
+      <div id="formFields">
       <div class="form-group">
         <label for="serie">Serie<span class="required">*</span></label>
         <input type="text" id="serie" name="Serie" placeholder="Ej: Breaking Bad" required autocomplete="off" />
@@ -280,6 +281,7 @@
         </div>
       </div>
 
+      </div> <!-- /formFields -->
       <button type="submit" id="submitBtn">
         <div class="spinner" id="spinner"></div>
         <span id="btnText">Iniciar subida</span>
@@ -354,7 +356,7 @@
     function setLoading(loading) {
       submitBtn.disabled = loading;
       spinner.style.display = loading ? 'block' : 'none';
-      btnText.textContent = loading ? 'Enviando...' : 'Iniciar subida';
+      btnText.textContent = loading ? 'Subiendo...' : 'Iniciar subida';
     }
 
     function showFeedback(type, msg, detail) {
@@ -421,6 +423,7 @@
           activeSource.close();
           activeSource = null;
           setLoading(false);
+          document.getElementById('formFields').style.display = 'block';
         }
       };
 
@@ -428,6 +431,7 @@
         activeSource.close();
         activeSource = null;
         setLoading(false);
+        document.getElementById('formFields').style.display = 'block';
       };
     }
 
@@ -464,6 +468,7 @@
           showFeedback('success', data.message);
           form.reset();
           fileName.style.display = 'none';
+          document.getElementById('formFields').style.display = 'none';
           openProgressStream(data.jobId);
           // Keep loading spinner until workflow finishes
         } else {
