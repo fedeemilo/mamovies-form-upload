@@ -1,0 +1,3 @@
+raspito.tail5eff8c.ts.net:3333 {
+    reverse_proxy mamovies-form-upload:3333
+}

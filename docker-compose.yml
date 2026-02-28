@@ -2,13 +2,32 @@ services:
   mamovies-form:
     build: .
     container_name: mamovies-form-upload
-    ports:
-      - "${PORT:-3333}:3333"
+    expose:
+      - "3333"
     environment:
       - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL}
     restart: unless-stopped
     networks:
       - mamovies_mamovies-network
+
+  caddy:
+    image: caddy:2-alpine
+    container_name: mamovies-form-caddy
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3333}:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - mamovies_mamovies-network
+    depends_on:
+      - mamovies-form
+
+volumes:
+  caddy_data:
+  caddy_config:
 
 networks:
   mamovies_mamovies-network:
