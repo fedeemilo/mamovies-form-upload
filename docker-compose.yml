@@ -7,3 +7,9 @@ services:
     environment:
       - N8N_WEBHOOK_URL=${N8N_WEBHOOK_URL}
     restart: unless-stopped
+    networks:
+      - mamovies-network
+
+networks:
+  mamovies-network:
+    external: true
