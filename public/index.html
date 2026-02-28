@@ -47,22 +47,10 @@
       flex-shrink: 0;
     }
 
-    .header-text h1 {
-      font-size: 18px;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.2;
-    }
+    .header-text h1 { font-size: 18px; font-weight: 700; color: #fff; line-height: 1.2; }
+    .header-text p  { font-size: 13px; color: #666; margin-top: 2px; }
 
-    .header-text p {
-      font-size: 13px;
-      color: #666;
-      margin-top: 2px;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
+    .form-group { margin-bottom: 20px; }
 
     label {
       display: block;
@@ -74,10 +62,7 @@
       letter-spacing: 0.04em;
     }
 
-    label .required {
-      color: #e63946;
-      margin-left: 3px;
-    }
+    label .required { color: #e63946; margin-left: 3px; }
 
     input[type="text"],
     input[type="number"] {
@@ -93,20 +78,12 @@
     }
 
     input[type="text"]:focus,
-    input[type="number"]:focus {
-      border-color: #e63946;
-    }
+    input[type="number"]:focus { border-color: #e63946; }
 
     input[type="text"]::placeholder,
-    input[type="number"]::placeholder {
-      color: #444;
-    }
+    input[type="number"]::placeholder { color: #444; }
 
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
     .file-zone {
       width: 100%;
@@ -120,8 +97,7 @@
       position: relative;
     }
 
-    .file-zone:hover,
-    .file-zone.drag-over {
+    .file-zone:hover, .file-zone.drag-over {
       border-color: #e63946;
       background: #16101a;
     }
@@ -135,29 +111,10 @@
       height: 100%;
     }
 
-    .file-icon {
-      font-size: 28px;
-      margin-bottom: 8px;
-    }
-
-    .file-label {
-      font-size: 14px;
-      color: #666;
-    }
-
-    .file-label span {
-      color: #e63946;
-      font-weight: 600;
-    }
-
-    .file-name {
-      margin-top: 8px;
-      font-size: 13px;
-      color: #e63946;
-      font-weight: 500;
-      word-break: break-all;
-      display: none;
-    }
+    .file-icon { font-size: 28px; margin-bottom: 8px; }
+    .file-label { font-size: 14px; color: #666; }
+    .file-label span { color: #e63946; font-weight: 600; }
+    .file-name { margin-top: 8px; font-size: 13px; color: #e63946; font-weight: 500; word-break: break-all; display: none; }
 
     button[type="submit"] {
       width: 100%;
@@ -177,22 +134,12 @@
       gap: 8px;
     }
 
-    button[type="submit"]:hover:not(:disabled) {
-      opacity: 0.9;
-    }
-
-    button[type="submit"]:active:not(:disabled) {
-      transform: scale(0.99);
-    }
-
-    button[type="submit"]:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
+    button[type="submit"]:hover:not(:disabled) { opacity: 0.9; }
+    button[type="submit"]:active:not(:disabled) { transform: scale(0.99); }
+    button[type="submit"]:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .spinner {
-      width: 16px;
-      height: 16px;
+      width: 16px; height: 16px;
       border: 2px solid rgba(255,255,255,0.3);
       border-top-color: #fff;
       border-radius: 50%;
@@ -202,6 +149,7 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ── Feedback ── */
     .feedback {
       margin-top: 20px;
       border-radius: 8px;
@@ -229,6 +177,67 @@
 
     .feedback .feedback-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
     .feedback .feedback-detail { font-size: 12px; color: inherit; opacity: 0.7; margin-top: 4px; }
+
+    /* ── Progress panel ── */
+    .progress-panel {
+      margin-top: 24px;
+      background: #0f0f13;
+      border: 1px solid #2a2a38;
+      border-radius: 10px;
+      padding: 16px 20px;
+      display: none;
+    }
+
+    .progress-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #555;
+      margin-bottom: 14px;
+    }
+
+    .step-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #555;
+      transition: color 0.3s;
+    }
+
+    .step-item.active { color: #e0e0e0; }
+    .step-item.done   { color: #4ade80; }
+    .step-item.error  { color: #f87171; }
+
+    .step-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .step-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #333;
+      flex-shrink: 0;
+    }
+
+    .step-item.active .step-dot { background: #e63946; animation: pulse 1s ease-in-out infinite; }
+    .step-item.done .step-dot   { display: none; }
+    .step-item.error .step-dot  { display: none; }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
   </style>
 </head>
 <body>
@@ -244,52 +253,24 @@
     <form id="uploadForm" novalidate>
       <div class="form-group">
         <label for="serie">Serie<span class="required">*</span></label>
-        <input
-          type="text"
-          id="serie"
-          name="Serie"
-          placeholder="Ej: Breaking Bad"
-          required
-          autocomplete="off"
-        />
+        <input type="text" id="serie" name="Serie" placeholder="Ej: Breaking Bad" required autocomplete="off" />
       </div>
 
       <div class="row">
         <div class="form-group">
           <label for="temporada">Temporada<span class="required">*</span></label>
-          <input
-            type="number"
-            id="temporada"
-            name="Temporada"
-            placeholder="1"
-            min="1"
-            value="1"
-            required
-          />
+          <input type="number" id="temporada" name="Temporada" placeholder="1" min="1" value="1" required />
         </div>
         <div class="form-group">
           <label for="episodios">Episodios<span class="required">*</span></label>
-          <input
-            type="number"
-            id="episodios"
-            name="Episodios"
-            placeholder="Ej: 13"
-            min="1"
-            required
-          />
+          <input type="number" id="episodios" name="Episodios" placeholder="Ej: 13" min="1" required />
         </div>
       </div>
 
       <div class="form-group">
         <label>Torrent<span class="required">*</span></label>
         <div class="file-zone" id="fileZone">
-          <input
-            type="file"
-            id="torrent"
-            name="Torrent"
-            accept=".torrent"
-            required
-          />
+          <input type="file" id="torrent" name="Torrent" accept=".torrent" required />
           <div class="file-icon">📦</div>
           <div class="file-label">
             <span>Elegí un archivo</span> o arrastrá acá<br />
@@ -311,51 +292,65 @@
           <div class="feedback-detail" id="feedbackDetail"></div>
         </div>
       </div>
+
+      <!-- Progress panel — shown after successful submit -->
+      <div class="progress-panel" id="progressPanel">
+        <div class="progress-title">Estado del workflow</div>
+        <div class="step-list" id="stepList"></div>
+      </div>
     </form>
   </div>
 
   <script>
-    const form = document.getElementById('uploadForm');
-    const fileInput = document.getElementById('torrent');
-    const fileZone = document.getElementById('fileZone');
-    const fileName = document.getElementById('fileName');
-    const submitBtn = document.getElementById('submitBtn');
-    const spinner = document.getElementById('spinner');
-    const btnText = document.getElementById('btnText');
-    const feedback = document.getElementById('feedback');
-    const feedbackIcon = document.getElementById('feedbackIcon');
-    const feedbackMsg = document.getElementById('feedbackMsg');
-    const feedbackDetail = document.getElementById('feedbackDetail');
+    const form        = document.getElementById('uploadForm');
+    const fileInput   = document.getElementById('torrent');
+    const fileZone    = document.getElementById('fileZone');
+    const fileName    = document.getElementById('fileName');
+    const submitBtn   = document.getElementById('submitBtn');
+    const spinner     = document.getElementById('spinner');
+    const btnText     = document.getElementById('btnText');
+    const feedback    = document.getElementById('feedback');
+    const feedbackIcon    = document.getElementById('feedbackIcon');
+    const feedbackMsg     = document.getElementById('feedbackMsg');
+    const feedbackDetail  = document.getElementById('feedbackDetail');
+    const progressPanel   = document.getElementById('progressPanel');
+    const stepList        = document.getElementById('stepList');
 
+    // Steps that are "terminal" — no more events after these
+    const TERMINAL_STEPS = new Set(['upload_ok', 'timeout']);
+
+    // Icon and label per step key
+    const STEP_META = {
+      torrent_started:  { icon: '🚀', label: 'Torrent enviado a qBittorrent' },
+      downloading:      { icon: '⬇️', label: 'Descargando...' },
+      downloaded:       { icon: '✅', label: 'Descarga completada' },
+      files_moved:      { icon: '📁', label: 'Archivos organizados en /series' },
+      season_prepared:  { icon: '🗂️', label: 'Temporada preparada' },
+      upload_ok:        { icon: '🎬', label: 'Serie subida a Mamovies' },
+      timeout:          { icon: '⏰', label: 'Timeout: descarga cancelada' },
+    };
+
+    let activeSource = null;
+
+    // ── File input ──────────────────────────────────────────
     fileInput.addEventListener('change', () => {
-      if (fileInput.files[0]) {
-        fileName.textContent = fileInput.files[0].name;
-        fileName.style.display = 'block';
-      } else {
-        fileName.style.display = 'none';
-      }
+      fileName.textContent = fileInput.files[0] ? fileInput.files[0].name : '';
+      fileName.style.display = fileInput.files[0] ? 'block' : 'none';
     });
 
-    fileZone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      fileZone.classList.add('drag-over');
-    });
-
-    fileZone.addEventListener('dragleave', () => {
-      fileZone.classList.remove('drag-over');
-    });
-
-    fileZone.addEventListener('drop', (e) => {
+    fileZone.addEventListener('dragover', e => { e.preventDefault(); fileZone.classList.add('drag-over'); });
+    fileZone.addEventListener('dragleave', () => fileZone.classList.remove('drag-over'));
+    fileZone.addEventListener('drop', e => {
       e.preventDefault();
       fileZone.classList.remove('drag-over');
-      const files = e.dataTransfer.files;
-      if (files.length) {
-        fileInput.files = files;
-        fileName.textContent = files[0].name;
+      if (e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        fileName.textContent = e.dataTransfer.files[0].name;
         fileName.style.display = 'block';
       }
     });
 
+    // ── UI helpers ──────────────────────────────────────────
     function setLoading(loading) {
       submitBtn.disabled = loading;
       spinner.style.display = loading ? 'block' : 'none';
@@ -369,14 +364,82 @@
       feedbackDetail.textContent = detail || '';
     }
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    function clearFeedback() {
       feedback.className = 'feedback';
+    }
 
-      const serie = document.getElementById('serie').value.trim();
+    // ── Progress helpers ────────────────────────────────────
+    function getOrCreateStep(key) {
+      let el = document.getElementById('step-' + key);
+      if (!el) {
+        const meta = STEP_META[key] || { icon: '•', label: key };
+        el = document.createElement('div');
+        el.id = 'step-' + key;
+        el.className = 'step-item active';
+        el.innerHTML = `
+          <div class="step-dot"></div>
+          <div class="step-icon" style="display:none">${meta.icon}</div>
+          <span class="step-label">${meta.label}</span>`;
+        stepList.appendChild(el);
+      }
+      return el;
+    }
+
+    function resolveStep(key, isError) {
+      const el = getOrCreateStep(key);
+      el.classList.remove('active');
+      el.classList.add(isError ? 'error' : 'done');
+      el.querySelector('.step-dot').style.display = 'none';
+      el.querySelector('.step-icon').style.display = 'flex';
+    }
+
+    function updateProgress(step, message) {
+      const el = getOrCreateStep(step);
+
+      if (step === 'downloading') {
+        // Keep as active, update label in place
+        el.querySelector('.step-label').textContent = message || 'Descargando...';
+      } else if (step === 'timeout') {
+        resolveStep(step, true);
+      } else {
+        resolveStep(step, false);
+      }
+    }
+
+    function openProgressStream(jobId) {
+      if (activeSource) activeSource.close();
+
+      progressPanel.style.display = 'block';
+      stepList.innerHTML = '';
+
+      activeSource = new EventSource('/events/' + jobId);
+
+      activeSource.onmessage = e => {
+        const { step, message } = JSON.parse(e.data);
+        updateProgress(step, message);
+        if (TERMINAL_STEPS.has(step)) {
+          activeSource.close();
+          activeSource = null;
+          setLoading(false);
+        }
+      };
+
+      activeSource.onerror = () => {
+        activeSource.close();
+        activeSource = null;
+        setLoading(false);
+      };
+    }
+
+    // ── Submit ──────────────────────────────────────────────
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      clearFeedback();
+
+      const serie     = document.getElementById('serie').value.trim();
       const temporada = document.getElementById('temporada').value;
       const episodios = document.getElementById('episodios').value;
-      const file = fileInput.files[0];
+      const file      = fileInput.files[0];
 
       if (!serie || !temporada || !episodios || !file) {
         showFeedback('error', 'Completá todos los campos antes de enviar.');
@@ -384,6 +447,8 @@
       }
 
       setLoading(true);
+      progressPanel.style.display = 'none';
+      stepList.innerHTML = '';
 
       try {
         const formData = new FormData();
@@ -392,19 +457,21 @@
         formData.append('Episodios', episodios);
         formData.append('Torrent', file);
 
-        const res = await fetch('/submit', { method: 'POST', body: formData });
+        const res  = await fetch('/submit', { method: 'POST', body: formData });
         const data = await res.json();
 
         if (res.ok && data.success) {
-          showFeedback('success', data.message, '');
+          showFeedback('success', data.message);
           form.reset();
           fileName.style.display = 'none';
+          openProgressStream(data.jobId);
+          // Keep loading spinner until workflow finishes
         } else {
           showFeedback('error', data.error || 'Error desconocido.', data.detail || '');
+          setLoading(false);
         }
       } catch (err) {
         showFeedback('error', 'Error de red al contactar el servidor.', err.message);
-      } finally {
         setLoading(false);
       }
     });
