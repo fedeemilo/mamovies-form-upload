@@ -1,6 +1,7 @@
 services:
   mamovies-form:
     build: .
+    container_name: mamovies-form-upload
     ports:
       - "${PORT:-3333}:3333"
     environment:
