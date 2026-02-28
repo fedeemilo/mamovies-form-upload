@@ -14,10 +14,10 @@ services:
     image: caddy:2-alpine
     container_name: mamovies-form-caddy
     restart: unless-stopped
+    command: caddy reverse-proxy --from raspito.tail5eff8c.ts.net:3333 --to mamovies-form-upload:3333
     ports:
-      - "${PORT:-3333}:443"
+      - "${PORT:-3333}:3333"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
     networks:
